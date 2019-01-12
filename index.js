@@ -1,6 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
+const userRouter = require('./api/routes/user')
+
 
 const {MongoURL, port} = require('./config/mLabConfig');
 
@@ -14,9 +16,12 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+//routes
+app.use('/collections/users', userRouter)
+
 app.listen(port, () => console.log('listening on port ' + port));
 
-app.get('/collections/test', (req,res) => {
+app.get('/collections/test', (req, res) => {
     res.send('yep im running')
     console.log('yep im running')
 })
