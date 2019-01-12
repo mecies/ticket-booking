@@ -6,8 +6,8 @@ const {MongoURL, port} = require('./config/mLabConfig');
 
 // mongodb://<dbuser>:<dbpassword>@ds153974.mlab.com:53974/cinema
 mongoose.connect(MongoURL, { useNewUrlParser: true })
-.then(() => console.log('connected to mLab DB'))
-.catch(error => console.error('Could not connect to mLab DB', error));
+    .then(() => console.log('connected to mLab DB'))
+    .catch(error => console.error('Could not connect to mLab DB', error));
 
 const app = express();
 
