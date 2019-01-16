@@ -1,8 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors')
 
 
 const userRouter = require('./api/routes/user')
+const roomsRouter = require('./api/routes/rooms')
 
 
 const {MongoURL, port} = require('./config/mLabConfig');
@@ -14,11 +16,14 @@ mongoose.connect(MongoURL, { useNewUrlParser: true })
 
 const app = express();
 
+app.use(cors())
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 //routes
-app.use('/collections/users', userRouter)
+app.use('/collections/users', userRouter);
+app.use('/collections/rooms', roomsRouter);
 
 app.listen(port, () => console.log('listening on port ' + port));
 
