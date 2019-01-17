@@ -1,15 +1,17 @@
 import React from 'react';
-import { Card, CardTitle, CardMedia } from 'material-ui';
+import { connect } from 'react-redux';
+import Grid from '@material-ui/core/Grid';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
-const styles = {
-    cardTitle: {
-        whiteSpace: 'nowrap',
-        textOverflow: 'ellipsis',
-        overflow: 'hidden'
-    },
+const classes = {
     cardMedia: {
-        maxHeight: 394,
-        overflow: 'hidden'
+        height: 140
     },
     card: {
         cursor: 'pointer',
@@ -24,36 +26,41 @@ const styles = {
 class MovieCardComponent extends React.Component {
     constructor(props) {
         super(props);
+        
         this.state = {
             isMouseOver: false
         };
     }
 
     render() {
-        const { movie, openMovieModal } = this.props;
-        // The subtitle won't render if it's null
-        const subtitle = this.state.isMouseOver ? movie.overview : null;
+        const { movie } = this.props;
 
-        return (
-            <Card
-                style={styles.card}
-                onMouseOver={() => this.setState({ isMouseOver: true })}
-                onMouseLeave={() => this.setState({ isMouseOver: false })}
-            >
-                <CardMedia
-                    style={styles.cardMedia}
-                    overlay={
-                        <CardTitle
-                            title={movie.title}
-                            subtitle={subtitle}
-                        />
-                    }
-                >
-                    <img style={styles.bgImage} src={movie.poster_path} />
-                </CardMedia>
-            </Card>
-        );
+        return <Card className={classes.card} onMouseOver={() => this.setState(
+                { isMouseOver: true }
+              )} onMouseLeave={() => this.setState({
+                isMouseOver: false
+              })}>
+            <CardActionArea>
+              <CardMedia className={classes.media} />
+              <img style={classes.bgImage} src={movie.poster_path} />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
+                  {movie.title}
+                </Typography>
+                <Typography className={classes.paragraph} component="p">
+                    { movie.release_date }
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+            <CardActions>
+              <Button size="medium" color="primary">
+                REZERWUJ
+              </Button>
+            </CardActions>
+          </Card>;
     }
 }
 
-export default MovieCardComponent;
+export default connect(
+    () => ({}),
+)(MovieCardComponent);

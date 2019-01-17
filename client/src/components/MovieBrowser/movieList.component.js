@@ -1,11 +1,10 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import MovieCard from './movieCard.component';
-import { EditorFormatAlignCenter } from 'material-ui/svg-icons';
 
 const styles = {
     movieColumn: {
-        marginBottom: 20,
+        marginBottom: 20
     }
 }
 const MovieListComponent = ({ movies }) => {
