@@ -7,11 +7,11 @@ export const keys = {
     'GET_MOVIE_DETAILS': 'GET_MOVIE_DETAILS',
 };
 
-export const getTopMovies = (page) => createAsyncActionCreator(
+export const getCurrentMovies = (page) => createAsyncActionCreator(
     // actionType
     keys.GET_TOP_MOVIES,
     // requestFn
-    movieService.getTopMovies,
+    movieService.getCurrentMovies,
     // requestParams
     { page }
 );

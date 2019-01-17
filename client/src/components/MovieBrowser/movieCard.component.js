@@ -24,7 +24,6 @@ const styles = {
 class MovieCardComponent extends React.Component {
     constructor(props) {
         super(props);
-        // Track if the mouse hovering over the movie card
         this.state = {
             isMouseOver: false
         };

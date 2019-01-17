@@ -10,8 +10,8 @@ const createMovieDbUrl = (relativeUrl, queryParams) => {
     return baseUrl;
 }
 
-export const getTopMovies = async ({ page }) => {
-    const fullUrl = createMovieDbUrl('/movie/top_rated', {
+export const getCurrentMovies = async ({ page }) => {
+    const fullUrl = createMovieDbUrl('/movie/now_playing', {
         page
     });
     return fetch(fullUrl);
