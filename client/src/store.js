@@ -1,7 +1,7 @@
 import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
 import thunkMiddlware from 'redux-thunk';
 import { createLogger } from 'redux-logger'
-import movieBrowserReducer from './components/MovieBrowser/browser.reducers';
+import movieBrowserReducer from './components/MovieBrowser/movieBrowser.reducers';
 
 const rootReducer = combineReducers({
     movieBrowser: movieBrowserReducer
