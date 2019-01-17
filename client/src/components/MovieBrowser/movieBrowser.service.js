@@ -1,0 +1,1 @@
+const MOVIE_DB_API_KEY = "e9985df55c19434e44f29e4b86308c5e";

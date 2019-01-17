@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { createReducer } from '../redux.helpers';
+import { createReducer } from '../common/redux.helpers';
 
 const movieModalReducer = createReducer({ isOpen: false }, {
 
