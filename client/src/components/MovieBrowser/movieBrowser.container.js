@@ -1,20 +1,30 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { Grid, Row, Col } from 'react-bootstrap';
 import { AppBar } from 'material-ui';
-import { Grid, Row } from 'react-bootstrap'
+import * as movieActions from './movieBrowser.actions';
+import * as movieHelpers from './movieBrowser.helpers';
+import MovieList from './movieList.component';
 
 class MovieBrowser extends React.Component {
+
+    componentDidMount() {
+        this.props.getTopMovies(1);
+    }
+
     render() {
+        const { topMovies } = this.props;
+        const movies = movieHelpers.getMoviesList(topMovies.response);
+
         return (
             <div>
-                <AppBar title='MovieApp' />
-                <h1>Wybierz film, który Cię interesuje</h1>
-                <p>Wybranie filmu przeniesie Cię do panelu rezerwacji seansu</p>
+                <AppBar title='Movie Browser' />
                 <Grid>
                     <Row>
                         <p>Search will go here</p>
                     </Row>
                     <Row>
-                        <p>Movie list will go here</p>
+                        <MovieList movies={movies} isLoading={topMovies.isLoading} />
                     </Row>
                 </Grid>
             </div>
@@ -22,4 +32,9 @@ class MovieBrowser extends React.Component {
     }
 }
 
-export default MovieBrowser;
+export default connect(
+    (state) => ({
+        topMovies: state.movieBrowser.topMovies
+    }),
+    { ...movieActions }
+)(MovieBrowser);
