@@ -23,7 +23,9 @@ class MovieBrowser extends React.Component {
               <h1>Wybierz film, który Cię interesuje</h1>
               <p>Wybranie filmu przeniesie Cię do panelu rezerwacji seansu</p>
             </div>
-            <Grid container spacing={24}>
+            <Grid container direction="row"
+                justify="space-around"
+                alignItems="center">
               <Grid item xs={3}>
                 <MovieList movies={movies} isLoading={topMovies.isLoading} />
               </Grid>
