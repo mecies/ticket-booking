@@ -32,6 +32,7 @@ router.post('/signup', (req, res) => {
                         error: err
                     })
                 });
+                
         }
     }) 
 })
@@ -61,15 +62,17 @@ router.post('/login', (req, res, next) => {
                 {
                   expiresIn: "1h"//token expires in 1hour  
                 })
-
+                res.redirect('http://localhost:3000/index.html');
                 return res.status(200).json({
                     message: "auth succesful",
                     token: token
                 })
+                
             } 
             return res.status(401).json({
                 message: 'Auth wrong email or password'
             })
+
         })
     })
     .catch(err => {
